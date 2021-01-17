@@ -1,7 +1,21 @@
+-
+  const preloadsFonts = [
+    "Whitney-Book.woff2",
+    "Whitney-Light.woff2",
+    "Whitney-Medium.woff2",
+    "Whitney-Semibold.woff2"
+  ];
+
 doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
+    meta(name="description" content="Подбор авто в лизинг")
     meta(name="viewport" content="width=device-width initial-scale=1.0")
-    title Document
+    link(rel="stylesheet" href="css/style.min.css")
+    each value in preloadsFonts
+      link(rel="preload" href=`fonts/${value}` as="font" type="font/woff2" crossorigin="anonymous")
+    title.
+      TEST - лизинг авто
   body
+    include ../blocks/prime-header
