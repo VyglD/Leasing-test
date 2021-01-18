@@ -5,6 +5,8 @@ $bald-desktop: 1170px;
 $desktop-offset: 60px;
 $desktop: #{$bald-desktop + 2 * $desktop-offset};
 
+$color-background-popup: #1C182F;
+
 :root {
   --prime-offset: 20px;
 
@@ -17,6 +19,9 @@ $desktop: #{$bald-desktop + 2 * $desktop-offset};
   --color-text: #474351;
   --color-gradient-blue: #2D1686;
   --color-gray: #F6F5F9;
+  --color-gray-2: #918D9A;
+  --color-gray-3: #DDDAE7;
+  --color-background-gray: rgba(#{hex-to-rgb($color-background-popup)}, 0.7);
 }
 
 @media (min-width: $tablet) {

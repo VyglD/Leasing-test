@@ -1,0 +1,110 @@
+@use "sass:math";
+
+$popup-cross-button-size: 42px;
+$popup-cross-size: 14px;
+$popup-cross-thickness: 2px;
+
+.popup {
+  display: none;
+
+  &--opened {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 100vh;
+    padding: 10px;
+
+    cursor: pointer;
+    background-color: var(--color-background-gray, gray);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.popup__content {
+  position: relative;
+
+  box-sizing: border-box;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  margin-left: 70px;
+
+  cursor: default;
+  background-color: var(--color-white, white);
+  border-radius: 6px;
+
+  animation: fall 0.5s forwards;
+}
+
+.popup__close-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  display: block;
+  width: $popup-cross-button-size;
+  height: $popup-cross-button-size;
+  padding: 0;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+
+  transition: transform 0.5s;
+}
+
+.popup__close-button::before,
+.popup__close-button::after {
+  content: "";
+
+  display: block;
+  width: math.hypot($popup-cross-size, $popup-cross-size);
+  height: $popup-cross-thickness;
+  margin: 0 auto;
+
+  background-color: var(--color-gray-2, gray);
+  border-radius: $popup-cross-thickness;
+}
+
+.popup__close-button::before {
+  transform: rotate(45deg);
+}
+
+.popup__close-button::after {
+  margin-top: #{-$popup-cross-thickness};
+
+  transform: rotate(-45deg);
+}
+
+.popup__close-button:hover,
+.popup__close-button:focus {
+  box-shadow: inset 0 0 0 2px var(--color-palite, black);
+
+  &::before,
+  &::after {
+    background-color: var(--color-orange-tone, orange);
+  }
+}
+
+.popup__close-button:hover {
+  transform: rotate(180deg);
+}
+
+.popup__close-button:active {
+  &::before,
+  &::after {
+    opacity: 0.5;
+  }
+}

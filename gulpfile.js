@@ -9,8 +9,7 @@ const htmlmin = require(`gulp-htmlmin`);
 const pug = require(`gulp-pug`);
 const pugLinter = require(`gulp-pug-linter`);
 const sourcemap = require(`gulp-sourcemaps`);
-const sass = require(`gulp-sass`);
-const wait = require(`gulp-wait`);
+const sass = require(`gulp-dart-sass`);
 const postcss = require(`gulp-postcss`);
 const autoprefixer = require(`autoprefixer`);
 const csso = require(`postcss-csso`);
@@ -153,7 +152,6 @@ gulp.task(`styles`, () => {
             sourcemap.init()
         )
     )
-    .pipe(wait(200))
     .pipe(sass())
     .pipe(postcss([
       autoprefixer,
