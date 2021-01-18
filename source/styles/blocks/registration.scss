@@ -1,0 +1,74 @@
+.registration {
+  position: relative;
+
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: $bald-desktop;
+  margin: 70px auto 185px;
+  padding: 70px var(--prime-offset);
+
+  @include background-gradient();
+  border-radius: 10px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 0;
+
+    width: 732px;
+    height: 340px;
+
+    background-image: url("../img/cars-background.png");
+    background-repeat: no-repeat;
+    opacity: 0.3;
+
+    transform: translate(-147px, 19px);
+  }
+}
+
+.registration__title {
+  position: relative;
+  z-index: 1;
+
+  margin: 1px 0 0;
+  width: 100%;
+  max-width: 560px;
+
+  color: var(--color-white, white);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+}
+
+.registration__action-button {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 45px;
+}
+
+
+@media (min-width: $tablet) {
+  .registration {
+    padding: 70px;
+  }
+}
+
+@media (min-width: $desktop) {
+  .registration {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  .registration__title {
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 45px;
+  }
+}
