@@ -1,0 +1,7 @@
+mixin blank(blankClass=``, descriptionClass=``)
+  section(class="blank")
+    h2(class="blank__title").
+      Данная страница отсутствует
+    p(class=`blank__description ${descriptionClass}`).
+      В рамках данного проекта запрошенная страница отсутствует.
+        Вы можете вернуться на #[a(class="blank__link" href="index.html") главную]

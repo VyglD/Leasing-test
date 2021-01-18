@@ -1,27 +1,9 @@
--
-  const preloadsFonts = [
-    "SegoeUI-Regular.woff2",
-    "SegoeUI-Semibold.woff2",
-    "Whitney-Book.woff2",
-    "Whitney-Medium.woff2",
-    "Whitney-Semibold.woff2"
-  ];
+extends ../extends/layout.pug
 
-doctype html
-html(lang="ru")
-  head
-    meta(charset="UTF-8")
-    meta(name="description" content="Подбор авто в лизинг")
-    meta(name="viewport" content="width=device-width initial-scale=1.0")
-    link(rel="stylesheet" href="css/style.min.css")
-    each value in preloadsFonts
-      link(rel="preload" href=`fonts/${value}` as="font" type="font/woff2" crossorigin="anonymous")
-    title.
-      TEST - лизинг авто
-  body
-    include ../blocks/prime-header
-    main
-      include ../blocks/banner
-      include ../blocks/advantages
-      include ../blocks/registration
-    include ../blocks/login
+block main
+  include ../blocks/banner
+  include ../blocks/advantages
+  include ../blocks/registration
+
+block addition
+  include ../blocks/popup-blank

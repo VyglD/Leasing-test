@@ -38,7 +38,6 @@ $popup-cross-thickness: 2px;
   display: block;
   width: auto;
   max-width: 100%;
-  margin-left: 70px;
 
   cursor: default;
   background-color: var(--color-white, white);
@@ -106,5 +105,11 @@ $popup-cross-thickness: 2px;
   &::before,
   &::after {
     opacity: 0.5;
+  }
+}
+
+@media (min-width: $desktop) {
+  .popup__content {
+    margin-left: 70px;
   }
 }

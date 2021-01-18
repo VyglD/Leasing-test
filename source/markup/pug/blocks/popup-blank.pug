@@ -1,0 +1,9 @@
+extends ../extends/popup.pug
+
+include ../mixins/blank.pug
+
+block variables
+  - var identifier = `popup-blank`
+
+block content
+  +blank("blank--popup", "blank__description--popup")

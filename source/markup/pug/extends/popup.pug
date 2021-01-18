@@ -1,4 +1,7 @@
-div(class="popup")
+block variables
+  - var identifier = false
+
+div(class="popup" id=identifier)
   div(class="popup__content")
     block content
     button(class="popup__close-button" type="button" aria-label="Закрыть окно")

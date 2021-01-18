@@ -1,18 +1,15 @@
-extends ../extends/popup.pug
-
 include ../mixins/action-button.pug
 
-block content
-  section(class="login")
-    h2(class="login__title").
-      Авторизация
-    form(class="login__form" method="POST" action="blank.html")
-      div(class="login__input-wrapper")
-        label(for="login-email").
-          E-mail
-        input(type="email" name="email" id="login-email" placeholder="Введите e-mail")
-      div(class="login__input-wrapper")
-        label(for="login-password").
-          Пароль
-        input(type="password" name="password" id="login-password" placeholder="Введите пароль")
-      +action-button("login__action-button", "Войти")
+section(class="login")
+  h2(class="login__title").
+    Авторизация
+  form(class="login__form" method="POST" action="blank.html")
+    div(class="login__input-wrapper")
+      label(for="login-email").
+        E-mail
+      input(type="email" name="email" id="login-email" placeholder="Введите e-mail")
+    div(class="login__input-wrapper")
+      label(for="login-password").
+        Пароль
+      input(type="password" name="password" id="login-password" placeholder="Введите пароль")
+    +action-button("login__action-button", "Войти")
