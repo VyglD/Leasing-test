@@ -1,0 +1,44 @@
+-
+  const advantages = [
+    {
+      title: `Экономия времени`,
+      description: `<span> Дополнительный канал </span>
+                    <span> потенциальных клиентов, готовых </span>
+                    <span> приобрести автомобиль, без затрат </span>
+                    <span> на рекламу и маркетинг. </span>`,
+      modificator: `time`,
+    },
+    {
+      title: `Никаких задержек`,
+      description: `<span> Вы получаете запросы сразу же </span>
+                    <span> после отправки клиентом. </span>`,
+      modificator: `speed`,
+    },
+    {
+      title: `Максимальная информативность`,
+      description: `<span> В каждой заявке указан регион поиска, </span>
+                    <span> марка и модель авто, а так же </span>
+                    <span> индивидуальные запросы клиента. </span>`,
+      modificator: `information`,
+    },
+    {
+      title: `Удобство общения`,
+      description: `<span> Для каждого запроса у вас открыт </span>
+                    <span> чат с клиентом с возможностью </span>
+                    <span> отправки документов. </span>`,
+      modificator: `chat`,
+    },
+  ]
+
+section(class="advantages")
+  h2(class="advantages__title").
+    Меньше условий – больше возможностей
+  ul(class="advantages__list")
+    each advantage in advantages
+      li(class="advantages__item-wrapper")
+        article(class=`advantage advantage--${advantage.modificator}`)
+          div(class="advantage__wrapper")
+            h3(class="advantage__title").
+              #{advantage.title}
+            p(class="advantage__description").
+              !{advantage.description}

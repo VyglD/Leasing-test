@@ -2,7 +2,6 @@
   "disallowAttributeConcatenation": true,
   "disallowClassLiterals": true,
   "disallowDuplicateAttributes": true,
-  "disallowHtmlText": true,
   "disallowLegacyMixinCall": true,
   "disallowMultipleLineBreaks": true,
   "disallowSpaceAfterCodeOperator": ["=", "!="],
