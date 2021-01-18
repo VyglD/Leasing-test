@@ -3,7 +3,7 @@ include ../mixins/action-button.pug
 section(class="login")
   h2(class="login__title").
     Авторизация
-  form(class="login__form" method="POST" action="blank.html")
+  form(class="login__form" method="GET" action="blank.html")
     div(class="login__input-wrapper")
       label(for="login-email").
         E-mail
@@ -12,4 +12,4 @@ section(class="login")
       label(for="login-password").
         Пароль
       input(type="password" name="password" id="login-password" placeholder="Введите пароль")
-    +action-button("login__action-button", "Войти")
+    +action-button("login__action-button", "Войти", "submit")

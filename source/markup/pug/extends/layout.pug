@@ -20,7 +20,8 @@ html(lang="ru")
       TEST - лизинг авто
   body
     include ../blocks/prime-header
-    main
+    main(data-scroll-offset)
       block main
     include ../blocks/popup-login
-    block addition
+    include ../blocks/popup-blank
+    script(src="js/app.min.js")
