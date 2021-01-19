@@ -4,6 +4,7 @@ import {FOCUS_ELEMENTS, Key} from "./constants";
 const CustomClass = {
   POPUP: `popup`,
   OPENED: `popup--opened`,
+  CONTENT: `popup__content`,
   DISABLE_SCROLL: `disable-scroll`,
   SCROLL_OFFSET: `offset-scroll`,
 };
@@ -30,10 +31,11 @@ const unlockScroll = () => {
 class Popup {
   constructor(selector, closeCallback = emptyFunction) {
     this._popup = document.querySelector(selector);
-    this._scrollOffsetNodes = document.querySelectorAll(`[data-scroll-offset]`);
+    if (this._popup) {
+      this._content = this._popup.querySelector(`.${CustomClass.CONTENT}`);
+    }
 
     this._previousFocusableElement = document.body;
-    this._focusableElements = [];
 
     this._closeCallback = closeCallback;
 
@@ -49,17 +51,21 @@ class Popup {
       .filter((node) => node.getBoundingClientRect().width);
   }
 
+  _getScrollOffsetNodes() {
+    return document.querySelectorAll(`[data-scroll-offset]`);
+  }
+
   _addOffset() {
     const paddingOffset = `${window.innerWidth - document.body.offsetWidth}px`;
 
-    this._scrollOffsetNodes.forEach((node) => {
-      node.style.paddingRight = paddingOffset;
+    this._getScrollOffsetNodes().forEach((node) => {
+      node.style.marginRight = paddingOffset;
     });
   }
 
   _removeOffset() {
-    this._scrollOffsetNodes.forEach((node) => {
-      node.style.paddingRight = 0;
+    this._getScrollOffsetNodes().forEach((node) => {
+      node.style.marginRight = 0;
     });
   }
 
@@ -78,10 +84,22 @@ class Popup {
   }
 
   _focusOnFirstPopupNode() {
-    this._focusableElements = this._getfocusableElements();
+    const focusableElements = this._getfocusableElements();
 
-    if (this._focusableElements.length > 0) {
-      this._focusableElements[0].focus();
+    if (focusableElements.length > 0) {
+
+      const focusOnFirstPopupNode = () => {
+        focusableElements[0].focus();
+
+        this._content.removeEventListener(`animationend`, focusOnFirstPopupNode);
+      };
+
+      // В firefox окно с подсказками (вариантами ввода) для input
+      // зависает в начале анимации перемещения
+      // поэтому фокусировка на элементе происходит в момент окончания анимации
+      if (this._content) {
+        this._content.addEventListener(`animationend`, focusOnFirstPopupNode);
+      }
     }
   }
 
@@ -131,24 +149,24 @@ class Popup {
 
   _handleFocusElementChange(evt) {
     if (evt.key === Key.TAB) {
+      const focusableElements = this._getfocusableElements();
       let indexElement = 0;
-      this._focusableElements = this._getfocusableElements();
 
       evt.preventDefault();
 
       if (evt.shiftKey) {
         indexElement = getPreviousArrayIndex(
-            this._focusableElements.indexOf(document.activeElement),
-            this._focusableElements
+            focusableElements.indexOf(document.activeElement),
+            focusableElements
         );
       } else {
         indexElement = getNextArrayIndex(
-            this._focusableElements.indexOf(document.activeElement),
-            this._focusableElements
+            focusableElements.indexOf(document.activeElement),
+            focusableElements
         );
       }
 
-      this._focusableElements[indexElement].focus();
+      focusableElements[indexElement].focus();
     }
   }
 

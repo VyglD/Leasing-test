@@ -5,11 +5,32 @@ section(class="login")
     Авторизация
   form(class="login__form" method="GET" action="blank.html")
     div(class="login__input-wrapper")
-      label(for="login-email").
+      label(
+        class="login__input-label"
+        for="login-email"
+      ).
         E-mail
-      input(type="email" name="email" id="login-email" placeholder="Введите e-mail")
+      input(
+        class="login__input"
+        type="email"
+        name="email"
+        id="login-email"
+        placeholder="Введите e-mail"
+        required
+      )
     div(class="login__input-wrapper")
-      label(for="login-password").
+      label(
+        class="login__input-label"
+        for="login-password"
+      ).
         Пароль
-      input(type="password" name="password" id="login-password" placeholder="Введите пароль")
+      input(
+        class="login__input"
+        type="password"
+        name="password"
+        id="login-password"
+        placeholder="Введите пароль"
+        autocomplete="off"
+        required
+      )
     +action-button("login__action-button", "Войти", "submit")

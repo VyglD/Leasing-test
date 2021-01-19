@@ -69,7 +69,7 @@ $popup-cross-thickness: 2px;
   content: "";
 
   display: block;
-  width: math.hypot($popup-cross-size, $popup-cross-size);
+  width: math.round(math.hypot($popup-cross-size, $popup-cross-size));
   height: $popup-cross-thickness;
   margin: 0 auto;
 
@@ -105,11 +105,5 @@ $popup-cross-thickness: 2px;
   &::before,
   &::after {
     opacity: 0.5;
-  }
-}
-
-@media (min-width: $desktop) {
-  .popup__content {
-    margin-left: 70px;
   }
 }
