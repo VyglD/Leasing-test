@@ -28,6 +28,8 @@ $popup-cross-thickness: 2px;
     background-color: var(--color-background-gray, gray);
     overflow-x: hidden;
     overflow-y: auto;
+
+    animation: fadeIn 0.5s forwards;
   }
 }
 

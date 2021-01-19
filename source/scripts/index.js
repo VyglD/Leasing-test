@@ -1,5 +1,6 @@
 import Popup from "./modules/popup";
 import {init as loginInit} from "./modules/login";
+import {setAbilitySpaceAction} from "./modules/utils";
 
 const popupBlank = new Popup(`#popup-blank`);
 const popupLogin = new Popup(`#popup-login`);
@@ -26,6 +27,8 @@ if (clientsLink && popupBlank.getPopupNode()) {
 
     openBlankPopup();
   });
+
+  setAbilitySpaceAction(clientsLink);
 }
 
 registrationButtons.forEach((node) => {

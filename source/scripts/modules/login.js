@@ -1,3 +1,23 @@
+import toastr from "toastr";
+
+toastr.options = {
+  closeButton: true,
+  debug: false,
+  newestOnTop: true,
+  progressBar: true,
+  positionClass: `toast-top-left`,
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: 300,
+  hideDuration: 1000,
+  timeOut: 5000,
+  extendedTimeOut: 1000,
+  showEasing: `swing`,
+  hideEasing: `linear`,
+  showMethod: `fadeIn`,
+  hideMethod: `fadeOut`
+};
+
 const INVALID_CLASS = `login__input--invalid`;
 
 const ErrorMessage = {
@@ -77,16 +97,19 @@ const init = (closeLoginPopup = () => {}) => {
           if (isFormValid) {
             inputs[i].focus();
 
-            inputs[i].setCustomValidity(inputs[i].errorMessage);
+            toastr.error(inputs[i].errorMessage);
             isFormValid = false;
           }
         }
       }
 
       if (isFormValid) {
+        toastr.success(`Форма успешно заполнена`);
+
         inputs.forEach((input) => {
           input.value = ``;
         });
+
         closeLoginPopup();
       }
     });
