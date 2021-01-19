@@ -4,7 +4,6 @@ import {FOCUS_ELEMENTS, Key} from "./constants";
 const CustomClass = {
   POPUP: `popup`,
   OPENED: `popup--opened`,
-  CONTENT: `popup__content`,
   DISABLE_SCROLL: `disable-scroll`,
   SCROLL_OFFSET: `offset-scroll`,
 };
@@ -31,8 +30,10 @@ const unlockScroll = () => {
 class Popup {
   constructor(selector, closeCallback = emptyFunction) {
     this._popup = document.querySelector(selector);
+
     if (this._popup) {
-      this._content = this._popup.querySelector(`.${CustomClass.CONTENT}`);
+      this._content = this._popup.querySelector(`.popup__content`);
+      this._closeButton = this._popup.querySelector(`.popup__close-button`);
     }
 
     this._previousFocusableElement = document.body;
@@ -44,6 +45,10 @@ class Popup {
     this._handleEmptyPlaceClickHandler = this._handleEmptyPlaceClickHandler.bind(this);
     this._handleEscKeyDown = this._handleEscKeyDown.bind(this);
     this._handleFocusElementChange = this._handleFocusElementChange.bind(this);
+
+    if (this._closeButton) {
+      this._closeButton.addEventListener(`click`, this._handleClosePopup);
+    }
   }
 
   _getfocusableElements() {
@@ -172,13 +177,15 @@ class Popup {
 
   getPopupOpenFunction() {
     if (this._popup) {
-      const closeButton = this._popup.querySelector(`.popup__close-button`);
-
-      if (closeButton) {
-        closeButton.addEventListener(`click`, this._handleClosePopup);
-      }
-
       return this._handleOpenPopup;
+    }
+
+    return emptyFunction;
+  }
+
+  getPopupCloseFunction() {
+    if (this._popup) {
+      return this._handleClosePopup;
     }
 
     return emptyFunction;

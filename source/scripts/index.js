@@ -1,4 +1,5 @@
 import Popup from "./modules/popup";
+import {init as loginInit} from "./modules/login";
 
 const popupBlank = new Popup(`#popup-blank`);
 const popupLogin = new Popup(`#popup-login`);
@@ -9,6 +10,9 @@ const registrationButtons = document.querySelectorAll(`.action-button--registrat
 
 const openBlankPopup = popupBlank.getPopupOpenFunction();
 const openLoginPopup = popupLogin.getPopupOpenFunction();
+const closeLoginPopup = popupLogin.getPopupCloseFunction();
+
+loginInit(closeLoginPopup);
 
 if (loginButton) {
   loginButton.addEventListener(`click`, openLoginPopup);
