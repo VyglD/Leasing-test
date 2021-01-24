@@ -2,10 +2,20 @@
   position: relative;
 
   box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 70px auto 185px;
+  padding: 0 var(--prime-offset);
+}
+
+.registration__content {
+  position: relative;
+
+  box-sizing: border-box;
   display: block;
   width: 100%;
   max-width: $bald-desktop;
-  margin: 70px auto 185px;
   padding: 70px var(--prime-offset);
 
   @include background-gradient();
@@ -54,7 +64,7 @@
 
 
 @media (min-width: $tablet) {
-  .registration {
+  .registration__content {
     padding: 70px;
   }
 }

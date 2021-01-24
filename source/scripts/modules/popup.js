@@ -5,7 +5,6 @@ const CustomClass = {
   POPUP: `popup`,
   OPENED: `popup--opened`,
   DISABLE_SCROLL: `disable-scroll`,
-  SCROLL_OFFSET: `offset-scroll`,
 };
 
 const emptyFunction = () => {};
@@ -28,7 +27,7 @@ const unlockScroll = () => {
 };
 
 class Popup {
-  constructor(selector, closeCallback = emptyFunction) {
+  constructor(selector) {
     this._popup = document.querySelector(selector);
 
     if (this._popup) {
@@ -37,8 +36,6 @@ class Popup {
     }
 
     this._previousFocusableElement = document.body;
-
-    this._closeCallback = closeCallback;
 
     this._handleOpenPopup = this._handleOpenPopup.bind(this);
     this._handleClosePopup = this._handleClosePopup.bind(this);
