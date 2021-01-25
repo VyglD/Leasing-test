@@ -127,3 +127,9 @@ input[type="radio"].visually-hidden {
     opacity: 1;
   }
 }
+
+@keyframes rotating {
+  100% {
+    transform: rotate(360deg);
+  }
+}

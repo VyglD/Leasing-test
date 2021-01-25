@@ -19,29 +19,31 @@
     margin: 0 auto;
 
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -54px 0;
   }
 
   &--time {
     &::after {
-      background-image: url("../img/time.svg");
+      background-image: url("../img/sprite.svg#time");
     }
   }
 
   &--speed {
     &::after {
-      background-image: url("../img/speed.svg");
+      background-image: url("../img/sprite.svg#speed");
     }
   }
 
   &--information {
     &::after {
-      background-image: url("../img/information.svg");
+      background-image: url("../img/sprite.svg#information");
     }
   }
 
   &--chat {
     &::after {
-      background-image: url("../img/chat.svg");
+      background-image: url("../img/sprite.svg#chat");
     }
   }
 }

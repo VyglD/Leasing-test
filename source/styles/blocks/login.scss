@@ -51,6 +51,8 @@ $login-input-focus-shadow: 0 0 0 2px var(--color-polite, black);
   border-radius: 4px;
   outline: none;
 
+  transition: box-shadow 0.3s;
+
   &::placeholder {
     color: var(--color-gray-2, gray);
   }

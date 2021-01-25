@@ -4,6 +4,7 @@ const clean = require(`gulp-clean`);
 const imagemin = require(`gulp-imagemin`);
 const webp = require(`gulp-webp`);
 const webpCSS = require(`gulp-webp-css`);
+const svgSprite = require(`gulp-svg-sprite`);
 const htmlhint = require(`gulp-htmlhint`);
 const htmlValidator = require(`gulp-w3c-html-validator`);
 const htmlmin = require(`gulp-htmlmin`);
@@ -45,6 +46,7 @@ const PATH = {
   BUILD_STYLES: `${FOLDER.BUILD}/${FOLDER.CSS}`,
   SCRIPTS: `${FOLDER.SRC}/${FOLDER.SCRIPTS}`,
   BUILD_SCRIPTS: `${FOLDER.BUILD}/${FOLDER.JS}`,
+  BUILD_IMG: `${FOLDER.BUILD}/${FOLDER.IMG}`,
 };
 
 PATH.PUG_PAGES = `${PATH.PUG}/pages`;
@@ -86,8 +88,21 @@ const addNewWebp = (path) => {
   formattedPictures([path]);
 };
 
+const createSvgSprite = () => {
+  return gulp.src(`${PATH.IMG}/**/*.svg`)
+    .pipe(svgSprite({
+      mode: {
+        stack: {
+          sprite: `../sprite.svg`
+        }
+      },
+    }))
+    .pipe(gulp.dest(PATH.BUILD_IMG));
+};
+
 const addNewSvg = (path) => {
   minifyPictures([path]);
+  createSvgSprite();
 };
 
 gulp.task(`test-pug`, () => {
@@ -125,6 +140,8 @@ gulp.task(`minify-pictures`, () => {
 gulp.task(`formatted-pictures`, () => {
   return formattedPictures([`${PATH.IMG}/**/*.{png,jpg}`]);
 });
+
+gulp.task(`svg-sprite`, createSvgSprite);
 
 gulp.task(`markup`, () => {
   return gulp.src(`${PATH.PUG_PAGES}/*.pug`)
@@ -213,6 +230,7 @@ gulp.task(`build`, gulp.series(
     `copy-static-files`,
     `minify-pictures`,
     `formatted-pictures`,
+    `svg-sprite`,
     `markup`,
     `styles`,
     `scripts`
@@ -248,6 +266,7 @@ gulp.task(`server`, () => {
   });
   gulp.watch(`${PATH.IMG}/**/*.svg`).on(`change`, (args) => {
     copy(args);
+    createSvgSprite();
     server.reload();
   });
   gulp.watch(`${PATH.STATIC}/**/*`)

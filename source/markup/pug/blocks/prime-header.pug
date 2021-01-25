@@ -1,9 +1,9 @@
 header(class="prime-header" data-scroll-offset)
   div(class="prime-header__wrapper")
-    div(class="prime-header--logo-wrapper")
+    div(class="prime-header__logo-wrapper")
       img(
         class="prime-header__logo"
-        src="img/logo.svg"
+        src="img/sprite.svg#logo"
         width="95"
         height="28"
         alt="Логотип компании TEST"
@@ -13,5 +13,7 @@ header(class="prime-header" data-scroll-offset)
         li(class="prime-header__link-wrapper")
           a(class="prime-header__link" href="blank.html" id="clients-js").
             Клиентам
-    button(class="prime-header__login" type="button" id="login-js").
-      Войти
+    button(class="prime-header__login" type="button" id="login-js")
+      svg(class="prime-header__login-icon" width="24" height="24")
+        use(xlink:href="img/sprite.svg#avatar")
+      | Войти
