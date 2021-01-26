@@ -1,0 +1,38 @@
+.toast-icon {
+  position: relative;
+
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 21px;
+  width: 21px;
+
+  background: #FFFFFF;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &--info {
+    &::before,
+    &::after {
+      content: "";
+
+      display: block;
+
+      background-color: currentColor;
+      border-radius: 3px;
+    }
+
+    &::before {
+      width: 3px;
+      height: 9px;
+    }
+
+    &::after {
+      width: 3px;
+      height: 3px;
+      margin-top: 2px;
+    }
+  }
+}

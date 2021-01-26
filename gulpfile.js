@@ -13,6 +13,8 @@ const pugLinter = require(`gulp-pug-linter`);
 const sourcemap = require(`gulp-sourcemaps`);
 const sass = require(`gulp-dart-sass`);
 const postcss = require(`gulp-postcss`);
+const merge = require(`merge-stream`);
+const concat = require(`gulp-concat`);
 const autoprefixer = require(`autoprefixer`);
 const csso = require(`postcss-csso`);
 const rename = require(`gulp-rename`);
@@ -162,7 +164,7 @@ gulp.task(`markup`, () => {
 gulp.task(`styles`, () => {
   const isProd = Boolean(argv.production);
 
-  return gulp.src(`${PATH.STYLES}/index.scss`)
+  const sassStream = gulp.src(`${PATH.STYLES}/index.scss`)
     .pipe(plumber())
     .pipe(
         gulpif(
@@ -171,6 +173,25 @@ gulp.task(`styles`, () => {
         )
     )
     .pipe(sass())
+    .pipe(webpCSS([`.jpg`, `.jpeg`, `.png`]))
+    .pipe(
+        gulpif(
+            !isProd,
+            sourcemap.write()
+        )
+    );
+
+  const cssStream = gulp.src(`node_modules/notyf/notyf.min.css`);
+
+  return merge(sassStream, cssStream)
+    .pipe(plumber())
+    .pipe(
+        gulpif(
+            !isProd,
+            sourcemap.init()
+        )
+    )
+    .pipe(concat(`style.css`))
     .pipe(postcss([
       autoprefixer,
       csso(
@@ -180,7 +201,6 @@ gulp.task(`styles`, () => {
       )
     ]))
     .pipe(rename(`style.min.css`))
-    .pipe(webpCSS([`.jpg`, `.jpeg`, `.png`]))
     .pipe(
         gulpif(
             !isProd,

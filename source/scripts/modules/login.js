@@ -1,22 +1,4 @@
-import toastr from "toastr";
-
-toastr.options = {
-  closeButton: true,
-  debug: false,
-  newestOnTop: true,
-  progressBar: true,
-  positionClass: `toast-top-left`,
-  preventDuplicates: false,
-  onclick: null,
-  showDuration: 300,
-  hideDuration: 1000,
-  timeOut: 5000,
-  extendedTimeOut: 1000,
-  showEasing: `swing`,
-  hideEasing: `linear`,
-  showMethod: `fadeIn`,
-  hideMethod: `fadeOut`
-};
+import {getToast} from "./utils";
 
 const INVALID_CLASS = `login__input--invalid`;
 
@@ -24,6 +6,8 @@ const ErrorMessage = {
   REQUIRED: `Поле обязательное для заполенения`,
   EMAIL: `Email указан неверно`,
 };
+
+const toast = getToast();
 
 const validateEmail = (email) => {
   const template = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -97,14 +81,14 @@ const init = (closeLoginPopup = () => {}) => {
           if (isFormValid) {
             inputs[i].focus();
 
-            toastr.error(inputs[i].errorMessage);
+            toast.error(inputs[i].errorMessage);
             isFormValid = false;
           }
         }
       }
 
       if (isFormValid) {
-        toastr.success(`Форма успешно заполнена`);
+        toast.success(`Форма успешно заполнена`);
 
         inputs.forEach((input) => {
           input.value = ``;

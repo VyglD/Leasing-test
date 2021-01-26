@@ -1,6 +1,8 @@
 import Popup from "./modules/popup";
 import {init as loginInit} from "./modules/login";
-import {setAbilitySpaceAction} from "./modules/utils";
+import {setAbilitySpaceAction, getToast} from "./modules/utils";
+
+const toast = getToast();
 
 const popupBlank = new Popup(`#popup-blank`);
 const popupLogin = new Popup(`#popup-login`);
@@ -25,7 +27,10 @@ if (clientsLink && popupBlank.getPopupNode()) {
   clientsLink.addEventListener(`click`, (evt) => {
     evt.preventDefault();
 
-    openBlankPopup();
+    toast.open({
+      type: `info`,
+      message: `Данный функционал отсутствует`,
+    });
   });
 
   setAbilitySpaceAction(clientsLink);

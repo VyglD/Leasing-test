@@ -1,3 +1,4 @@
+import {Notyf} from "notyf";
 import {Key} from "./constants";
 
 const getNextArrayIndex = (currentIndex, arr) => {
@@ -30,10 +31,35 @@ const setAbilitySpaceAction = (node) => {
   });
 };
 
+const getToast = () => {
+  const notyf = new Notyf({
+    duration: 3000,
+    ripple: false,
+    position: {
+      x: `left`,
+      y: `top`
+    },
+    dismissible: true,
+    types: [
+      {
+        type: `info`,
+        background: `#2f96b4`,
+        icon: {
+          className: `toast-icon toast-icon--info`,
+          tagName: `i`,
+        },
+      }
+    ]
+  });
+
+  return notyf;
+};
+
 export {
   getNextArrayIndex,
   getPreviousArrayIndex,
   isEscKeyDown,
   isSpaceKeyDown,
   setAbilitySpaceAction,
+  getToast,
 };

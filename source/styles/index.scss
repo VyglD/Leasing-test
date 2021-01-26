@@ -1,6 +1,6 @@
+@import "fonts.scss";
 @import "functions.scss";
 @import "variables.scss";
-@import "fonts.scss";
 @import "mixins.scss";
 @import "common.scss";
 @import "blocks/action-button.scss";
@@ -13,5 +13,5 @@
 @import "blocks/login.scss";
 @import "blocks/blank.scss";
 
-// External styles
-@import "../../node_modules/toastr/toastr.scss";
+// Additions
+@import "additions/toast.scss";
