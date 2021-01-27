@@ -1,11 +1,11 @@
-.login {
+.sign-up {
   box-sizing: border-box;
-  width: 490px;
+  width: 600px;
   max-width: 100%;
   padding: 40px 20px;
 }
 
-.login__title {
+.sign-up__title {
   margin: 0;
 
   color: var(--color-palite, black);
@@ -16,11 +16,11 @@
 }
 
 @media (min-width: $tablet) {
-  .login {
+  .sign-up {
     padding: 60px 60px 55px;
   }
 
-  .login__title {
+  .sign-up__title {
     font-weight: 600;
     font-size: 40px;
     line-height: 52px;

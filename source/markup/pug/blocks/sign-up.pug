@@ -1,0 +1,50 @@
+include ../mixins/action-button.pug
+include ../mixins/form.pug
+
+section(class="sign-up")
+  h2(class="sign-up__title").
+    Регистрация
+  -
+    const signUpInputProps = [
+      {
+        type: `text`,
+        name: `name`,
+        id: `sign-up-name`,
+        placeholder: `Введите ваше имя`,
+        required: true,
+        label: `Имя`,
+      },
+      {
+        type: `email`,
+        name: `email`,
+        id: `sign-up-email`,
+        placeholder: `Введите e-mail`,
+        required: true,
+        label: `E-mail`,
+      },
+      {
+        type: `tel`,
+        name: `phone`,
+        id: `sign-up-phone`,
+        placeholder: `+7 (999) 999 99 99`,
+        required: true,
+        label: `Телефон`,
+      },
+      {
+        type: `password`,
+        name: `password-1`,
+        id: `sign-up-password-1`,
+        placeholder: `Введите пароль`,
+        required: true,
+        label: `Пароль`,
+      },
+      {
+        type: `password`,
+        name: `password-2`,
+        id: `sign-up-password-2`,
+        placeholder: `Подтвердите пароль`,
+        required: true,
+        customClass: `form__field-wrapper--no-label`,
+      }
+    ];
+  +form(`GET`, `blank.html`, signUpInputProps, `Зарегистрироваться`, `sign-up__form`)

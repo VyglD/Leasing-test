@@ -1,29 +1,15 @@
-import Popup from "./modules/popup";
 import {init as loginInit} from "./modules/login";
+import {init as signUpInit} from "./modules/sign-up";
 import {setAbilitySpaceAction, getToast} from "./modules/utils";
 
 const toast = getToast();
 
-const popupBlank = new Popup(`#popup-blank`);
-const popupLogin = new Popup(`#popup-login`);
-
 const clientsLink = document.querySelector(`#clients-js`);
-const loginButton = document.querySelector(`#login-js`);
-const registrationButtons = document.querySelectorAll(`.action-button--registration`);
 
-const openBlankPopup = popupBlank.getPopupOpenFunction();
-const openLoginPopup = popupLogin.getPopupOpenFunction();
-const closeLoginPopup = popupLogin.getPopupCloseFunction();
+loginInit();
+signUpInit();
 
-loginInit(closeLoginPopup);
-
-if (loginButton) {
-  loginButton.addEventListener(`click`, openLoginPopup);
-}
-
-// Проверка наличия popupBlank в разметки для того, чтобы сохранить возможность
-// перехода по ссылке в случае отсутствия попапа
-if (clientsLink && popupBlank.getPopupNode()) {
+if (clientsLink) {
   clientsLink.addEventListener(`click`, (evt) => {
     evt.preventDefault();
 
@@ -35,7 +21,3 @@ if (clientsLink && popupBlank.getPopupNode()) {
 
   setAbilitySpaceAction(clientsLink);
 }
-
-registrationButtons.forEach((node) => {
-  node.addEventListener(`click`, openBlankPopup);
-});

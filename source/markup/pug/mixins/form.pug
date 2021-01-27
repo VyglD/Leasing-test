@@ -1,0 +1,32 @@
+mixin field(props)
+  -
+    const {
+        type = `text`,
+        name = false,
+        id = false,
+        placeholder = false,
+        required = false,
+        label = ``,
+        customClass = ``,
+      } = props;
+
+  div(class=`form__field-wrapper ${customClass}`)
+    label(
+      class="form__field-label"
+      for=id
+    ).
+      #{label}
+    input(
+      class="form__field-input"
+      type=type
+      name=name
+      id=id
+      placeholder=placeholder
+      required=required
+    )
+
+mixin form(method, action, inputProps, submitLabel, customClass = ``)
+  form(class=`form ${customClass}` method=method action=action)
+    each props in inputProps
+      +field(props)
+    +action-button(`form__submit`, submitLabel, "submit")

@@ -1,36 +1,28 @@
 include ../mixins/action-button.pug
+include ../mixins/form.pug
 
 section(class="login")
   h2(class="login__title").
     Авторизация
-  form(class="login__form" method="GET" action="blank.html")
-    div(class="login__input-wrapper")
-      label(
-        class="login__input-label"
-        for="login-email"
-      ).
-        E-mail
-      input(
-        class="login__input"
-        type="email"
-        name="email"
-        id="login-email"
-        placeholder="Введите e-mail"
-        required
-      )
-    div(class="login__input-wrapper")
-      label(
-        class="login__input-label"
-        for="login-password"
-      ).
-        Пароль
-      input(
-        class="login__input"
-        type="password"
-        name="password"
-        id="login-password"
-        placeholder="Введите пароль"
-        autocomplete="off"
-        required
-      )
-    +action-button("login__action-button", "Войти", "submit")
+  -
+    const loginInputProps = [
+      {
+        type: `email`,
+        name: `email`,
+        id: `login-email`,
+        placeholder: `Введите e-mail`,
+        required: true,
+        label: `E-mail`,
+        customClass: `login__input-wrapper`,
+      },
+      {
+        type: `password`,
+        name: `password`,
+        id: `login-password`,
+        placeholder: `Введите пароль`,
+        required: true,
+        label: `Пароль`,
+        customClass: `login__input-wrapper`,
+      }
+    ];
+  +form(`GET`, `blank.html`, loginInputProps, `Войти`, `login__form`)
