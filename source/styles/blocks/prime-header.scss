@@ -74,7 +74,7 @@
   &:hover,
   &:focus {
     color: var(--color-orange, orange);
-    font-size: 19px;
+    transform: scale(1.1);
   }
 
   &:hover {

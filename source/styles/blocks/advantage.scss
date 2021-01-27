@@ -12,7 +12,6 @@
   &::after {
     content: "";
 
-    grid-area: img;
     display: block;
     width: 193px;
     height: 193px;
@@ -54,7 +53,6 @@
 }
 
 .advantage__title {
-  grid-area: title;
   margin: 23px 0 0;
 
   color: var(--color-palite, black);
@@ -65,7 +63,6 @@
 }
 
 .advantage__description {
-  grid-area: description;
   margin: 21px 0;
 
   font-family: "Segoe UI", "Tahoma", sans-serif;
