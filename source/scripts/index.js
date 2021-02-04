@@ -1,3 +1,4 @@
+import AOS from "aos";
 import {init as loginInit} from "./modules/login";
 import {init as signUpInit} from "./modules/sign-up";
 import {setAbilitySpaceAction, getToast} from "./modules/utils";
@@ -21,3 +22,11 @@ if (clientsLink) {
 
   setAbilitySpaceAction(clientsLink);
 }
+
+AOS.init({
+  offset: 100,
+  duration: 500,
+  easing: `ease-out-back`,
+  delay: 0,
+  once: true,
+});

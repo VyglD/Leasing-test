@@ -181,7 +181,10 @@ gulp.task(`styles`, () => {
         )
     );
 
-  const cssStream = gulp.src(`node_modules/notyf/notyf.min.css`);
+  const cssStream = gulp.src([
+    `node_modules/notyf/notyf.min.css`,
+    `node_modules/aos/dist/aos.css`
+  ]);
 
   return merge(sassStream, cssStream)
     .pipe(plumber())

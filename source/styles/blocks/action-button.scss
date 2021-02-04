@@ -17,8 +17,7 @@
   transition: all 0.3s;
 }
 
-/* stylelint-disable-next-line no-duplicate-selectors */
-.action-button {
+.action-button:not(:disabled) {
   &:hover,
   &:focus {
     color: var(--color-text, black);

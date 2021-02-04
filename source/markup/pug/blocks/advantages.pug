@@ -31,11 +31,14 @@
   ]
 
 section(class="advantages")
-  h2(class="advantages__title").
+  h2(class="advantages__title" data-aos="fade-right").
     Меньше условий – больше возможностей
   ul(class="advantages__list")
-    each advantage in advantages
-      li(class="advantages__item-wrapper")
+    each advantage, index in advantages
+      li(
+        class="advantages__item-wrapper"
+        data-aos=index % 2 === 0 ? "fade-right" : "fade-left"
+      )
         article(class=`advantage advantage--${advantage.modificator}`)
           div(class="advantage__wrapper")
             h3(class="advantage__title").

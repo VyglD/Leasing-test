@@ -69,8 +69,7 @@
   transition: all 0.1s;
 }
 
-/* stylelint-disable-next-line no-duplicate-selectors */
-.prime-header__link {
+.prime-header__link:not(:disabled) {
   &:hover,
   &:focus {
     color: var(--color-orange, orange);
@@ -115,8 +114,7 @@
   animation: rotating 2s infinite linear forwards paused;
 }
 
-/* stylelint-disable-next-line no-duplicate-selectors */
-.prime-header__login {
+.prime-header__login:not(:disabled) {
   &:hover,
   &:focus {
     color: var(--color-orange, orange);

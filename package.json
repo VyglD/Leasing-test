@@ -7,6 +7,7 @@
         "@babel/core": "7.12.3",
         "@babel/preset-env": "7.12.1",
         "@htmlacademy/editorconfig-cli": "1.0.0",
+        "aos": "2.3.4",
         "autoprefixer": "10.0.1",
         "babelify": "10.0.0",
         "browser-sync": "2.26.13",
@@ -51,10 +52,11 @@
     "scripts": {
         "editorconfig": "editorconfig-cli",
         "stylelint": "stylelint \"source/styles/**/*.{css,scss}\" --aei",
+        "eslint": "eslint source/scripts/**/*.js",
         "start": "gulp start",
         "build": "gulp build --production",
         "dev": "gulp build",
-        "test": "gulp test && npm run stylelint && npm run editorconfig"
+        "test": "gulp test && npm run eslint && npm run stylelint && npm run editorconfig"
     },
     "pre-commit": [
         "test"
