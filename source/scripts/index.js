@@ -29,4 +29,5 @@ AOS.init({
   easing: `ease-out-back`,
   delay: 0,
   once: true,
+  disable: window.innerWidth < 1400,
 });
